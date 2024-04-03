@@ -28,7 +28,9 @@ A wrapper for the Paystack API with types.
 
 ## Usage
 
-### Creating an invoice
+### Payment request
+
+#### Create payment request
 
 ```typescript
 import { Paystack } from "//TODO"
@@ -37,12 +39,67 @@ const paystack = new Paystack({
   secret_key: secret_key,
 })
 
-const invoice = await paystack.invoice.create({
+const created_request = await paystack.payment_request.create({
   amount: 10000,
   description: "Payment for goods",
   due_date: "2022-12-31",
-  customer: "CUS_1234567890",
+  customer: "customer id",
 })
+```
+
+#### Update payment request
+
+```typescript
+const updated_request = await paystack.payment_request.update({
+  amount: 10000,
+  description: "Payment for goods",
+  due_date: "2022-12-31",
+  customer: "customer id",
+})
+```
+
+#### Fetch payment request
+
+```typescript
+const fetched_request = await paystack.payment_request.fetch("request id")
+```
+
+#### List payment requests
+
+```typescript
+const list = await paystack.payment_request.list(query)
+```
+
+#### Verify payment request
+
+```typescript
+const verified_request = await paystack.payment_request.verify("request id")
+```
+
+#### Send Notification
+
+```typescript
+const sent_notification = await paystack.payment_request.sendNotification(
+  "request id"
+)
+```
+
+#### Payment request total
+
+```typescript
+const total = await paystack.payment_request.total()
+```
+
+#### Finalize payment request
+
+```typescript
+const finalized_request = await paystack.payment_request.finalize("request id")
+```
+
+#### Archive payment request
+
+```typescript
+const archived_request = await paystack.payment_request.archive("request id")
 ```
 
 ## ROADMAP
