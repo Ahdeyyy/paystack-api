@@ -27,3 +27,5 @@ jobs:
 
       - name: Run Tests
         run: bun test
+      - name: Access environment variable
+        run: echo $PAYSTACK_SECRET
