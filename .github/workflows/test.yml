@@ -9,9 +9,6 @@ on:
 jobs:
   test:
     name: Run Tests
-    env:
-      PAYSTACK_SECRET: ${{ secrets.PAYSTACK_SECRET }}
-      CUSTOMER_CODE: ${{ secrets.CUSTOMER_CODE }}
     runs-on: ubuntu-latest
 
     steps:
@@ -26,4 +23,7 @@ jobs:
       - name: Install dependencies
         run: bun install
       - name: Run Tests
+        env:
+          PAYSTACK_SECRET: ${{ secrets.PAYSTACK_SECRET }}
+          CUSTOMER_CODE: ${{ secrets.CUSTOMER_CODE }}
         run: bun test
