@@ -22,10 +22,10 @@ jobs:
         with:
           node-version: "20.x"
 
+      - name: Access environment variable
+        run: echo $PAYSTACK_SECRET
       - name: Install Bun
         run: npm install -g bun
 
       - name: Run Tests
         run: bun test
-      - name: Access environment variable
-        run: echo $PAYSTACK_SECRET
