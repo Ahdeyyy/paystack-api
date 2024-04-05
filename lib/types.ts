@@ -670,3 +670,47 @@ export type UpdateCustomerResponse = { message: string } & ({
         updatedAt: string;
     }
 } | PaymentRequestError)
+
+export type ValidateCustomerData = {
+
+    /** Customer's first name */
+    first_name: string;
+
+    /** Customer's last name */
+    last_name: string;
+
+    /** 
+     * Predefined types of identification. 
+     * Only bank_account is supported at the moment 
+     * */
+    type: string;
+
+    /** Customer's identification number */
+    value?: string
+
+    /** 2 letter country code of identification issuer */
+    country: string;
+
+    /** Customer's Bank Verification Number */
+    bvn: string;
+
+    /** 
+     * You can get the list of Bank Codes by calling the List Banks endpoint.
+     *  (required if type is bank_account) 
+     * */
+    bank_code: string;
+
+    /**
+     *  Customer's bank account number.
+     *  (required if type is bank_account)
+     * */
+    account_number: string;
+
+    /** customer's middle name */
+    middle_name?: string;
+}
+
+export type ValidateCustomerResponse = {
+    status: boolean;
+    message: string;
+}

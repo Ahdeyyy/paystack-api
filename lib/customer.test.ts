@@ -55,3 +55,23 @@ test("update customer", async () => {
         }
     }
 })
+
+// { 
+//   "country": "NG",
+//   "type": "bank_account",
+//   "account_number": "0123456789",
+//   "bvn": "20012345677",
+//   "bank_code": "007",
+//   "first_name": "Asta",
+//   "last_name": "Lavista"
+// }
+
+test("validate customer", async () => {
+    let cust = (await customer())
+    expect(cust.status).toBe(true)
+    if (cust.status) {
+        let response = await paystack().customer.validate(cust.data.customer_code, { country: "NG", type: "bank_account", account_number: "0123456789", bvn: "20012345677", bank_code: "007", first_name: "Asta", last_name: "Lavista" })
+        expect(response.status).toBe(true)
+
+    }
+})

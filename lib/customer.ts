@@ -1,4 +1,4 @@
-import type { CreateCustomerData, CreateCustomerResponse, FetchCustomerResponse, ListCustomerData, ListCustomerResponse, UpdateCustomerData, UpdateCustomerResponse } from "./types";
+import type { CreateCustomerData, CreateCustomerResponse, FetchCustomerResponse, ListCustomerData, ListCustomerResponse, UpdateCustomerData, UpdateCustomerResponse, ValidateCustomerData, ValidateCustomerResponse } from "./types";
 
 export class Customer {
     private secret_key: string;
@@ -89,6 +89,20 @@ export class Customer {
         })
 
         const response_data = await response.json() as UpdateCustomerResponse;
+        return response_data;
+    }
+
+    /** Validate a customer's identity */
+    async validate(code: string, data: ValidateCustomerData): Promise<ValidateCustomerResponse> {
+        const headers = this.get_headers();
+        const response = await fetch(`${this.endpoint}/${code}/identification`, {
+            headers: headers,
+            method: "POST",
+            body: JSON.stringify(data)
+        })
+
+        const response_data = await response.json() as ValidateCustomerResponse;
+
         return response_data;
     }
 
