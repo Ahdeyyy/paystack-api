@@ -124,7 +124,7 @@ const archived_request = await paystack.payment_request.archive("request id")
   - [x] Fetch Customer
   - [x] Update Customer
   - [x] Validate Customer
-  - [ ] Whitelist/Blacklist Customer
+  - [x] Whitelist/Blacklist Customer
   - [ ] Deactivate Authorization
 
 ## Testing
