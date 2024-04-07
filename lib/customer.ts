@@ -1,4 +1,4 @@
-import type { CreateCustomerData, CreateCustomerResponse, FetchCustomerResponse, ListCustomerData, ListCustomerResponse, UpdateCustomerData, UpdateCustomerResponse, ValidateCustomerData, ValidateCustomerResponse } from "./types";
+import type { CreateCustomerData, CreateCustomerResponse, FetchCustomerResponse, ListCustomerData, ListCustomerResponse, RiskAction, UpdateCustomerData, UpdateCustomerResponse, ValidateCustomerData, ValidateCustomerResponse, WhitelistBlacklistCustomerData, WhitelistBlacklistCustomerResponse } from "./types";
 
 export class Customer {
     private secret_key: string;
@@ -102,6 +102,28 @@ export class Customer {
         })
 
         const response_data = await response.json() as ValidateCustomerResponse;
+
+        return response_data;
+    }
+
+    /**
+     * Whitelist or blacklist a customer on your integration
+     * note: you can only set risk_action to allow or deny when it's current value is default
+     * i.e you can't set risk_action to deny when it's already set to allow
+     * so you have to set it to default first before you can set it to allow or deny
+     * @param data 
+     * @returns 
+     */
+    async whitelist_blacklist(data: WhitelistBlacklistCustomerData): Promise<WhitelistBlacklistCustomerResponse> {
+        const headers = this.get_headers();
+        const response = await fetch(`${this.endpoint}/set_risk_action`, {
+            headers: headers,
+            method: "POST",
+            body: JSON.stringify(data)
+        })
+
+
+        const response_data = await response.json() as WhitelistBlacklistCustomerResponse;
 
         return response_data;
     }

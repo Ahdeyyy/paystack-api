@@ -6,6 +6,8 @@ export type TaxData = { name: "VAT", amount: number }
 
 export type PaymentRequestStatus = "pending" | "draft" | "paid" | "denied"
 
+export type RiskAction = "default" | "allow" | "deny"
+
 export interface PaystackResponse {
     status: boolean;
     message: string;
@@ -27,7 +29,7 @@ export type CustomerData = {
     metadata: {
         calling_code: string,
     },
-    risk_action: "default",
+    risk_action: RiskAction,
     international_format_phone: null
 }
 
@@ -319,7 +321,7 @@ export type FetchPaymentRequestResponse = {
                     };
                     domain: string;
                     customer_code: string;
-                    risk_action: "default";
+                    risk_action: RiskAction;
                     id: number
                     integration: number
                     createdAt: string;
@@ -366,7 +368,7 @@ export type VeryifyPaymentRequestResponse = {
             metadata: {
                 calling_code: string;
             };
-            risk_action: string;
+            risk_action: RiskAction;
             international_format_phone: null;
         };
         created_at: string;
@@ -435,7 +437,7 @@ export type FinalizePaymentRequestResponse = { message: string; } & ({
             metadata: {
                 calling_code: string;
             };
-            risk_action: string;
+            risk_action: RiskAction;
             international_format_phone: null;
         };
         created_at: string;
@@ -475,7 +477,7 @@ export type UpdatePaymentRequestResponse = { message: string; } & ({
             metadata: {
                 calling_code: string;
             };
-            risk_action: string;
+            risk_action: RiskAction;
             international_format_phone: null;
         };
         created_at: string;
@@ -565,7 +567,7 @@ export type Customer = {
     metadata: Record<string, unknown> | null;
     domain: string;
     customer_code: string;
-    risk_action: string;
+    risk_action: RiskAction;
     id: number;
     createdAt: string;
     updatedAt: string;
@@ -611,7 +613,7 @@ type FetchResponseData = {
     metadata: Record<string, unknown> | null;
     domain: string;
     customer_code: string;
-    risk_action: string;
+    risk_action: RiskAction;
     id: number;
     integration: number;
     createdAt: string;
@@ -714,3 +716,39 @@ export type ValidateCustomerResponse = {
     status: boolean;
     message: string;
 }
+
+export type WhitelistBlacklistCustomerData = {
+    /** Customer's code, or email address */
+    customer: string;
+
+    /**
+     * One of the possible risk actions 
+     * [ default, allow, deny ]. allow to whitelist. deny to blacklist. 
+     * Customers start with a default risk action.
+     */
+    risk_action: RiskAction;
+
+}
+
+export type WhitelistBlacklistCustomerResponse = {
+    message: string;
+} & ({
+    status: true;
+    data: {
+        first_name: string | null;
+        last_name: string | null;
+        email: string;
+        phone: string | null;
+        metadata: Record<string, unknown>;
+        domain: string;
+        identified: boolean;
+        identifications: any | null;
+        customer_code: string;
+        risk_action: RiskAction;
+        id: number;
+        integration: number;
+        createdAt: string;
+        updatedAt: string;
+    }
+}
+    | PaymentRequestError)
