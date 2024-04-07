@@ -1,4 +1,4 @@
-import type { CreateCustomerData, CreateCustomerResponse, FetchCustomerResponse, ListCustomerData, ListCustomerResponse, RiskAction, UpdateCustomerData, UpdateCustomerResponse, ValidateCustomerData, ValidateCustomerResponse, WhitelistBlacklistCustomerData, WhitelistBlacklistCustomerResponse } from "./types";
+import type { CreateCustomerData, CreateCustomerResponse, DeactivateAuthorizationResponse, FetchCustomerResponse, ListCustomerData, ListCustomerResponse, RiskAction, UpdateCustomerData, UpdateCustomerResponse, ValidateCustomerData, ValidateCustomerResponse, WhitelistBlacklistCustomerData, WhitelistBlacklistCustomerResponse } from "./types";
 
 export class Customer {
     private secret_key: string;
@@ -126,6 +126,21 @@ export class Customer {
         const response_data = await response.json() as WhitelistBlacklistCustomerResponse;
 
         return response_data;
+    }
+
+    async deactivate_authorization(authorization_code: string): Promise<DeactivateAuthorizationResponse> {
+        const header = this.get_headers();
+
+        const response = await fetch(this.endpoint + "/deactivate_authorization", {
+            headers: header,
+            method: "POST",
+            body: JSON.stringify({ authorization_code: authorization_code })
+        })
+
+        const response_data = await response.json() as DeactivateAuthorizationResponse;
+
+        return response_data;
+
     }
 
 } 

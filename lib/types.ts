@@ -229,7 +229,7 @@ export type UpdatePaymentRequestData = {
 
 }
 
-export type PaymentRequestError = {
+export type PaystackResponseError = {
     status: false;
     meta: {
         nextStep: string
@@ -253,7 +253,7 @@ export type CreatePaymentRequestResponse = {
         offline_reference: string;
         created_at: string;
     }
-} | PaymentRequestError)
+} | PaystackResponseError)
 
 
 export type ListPaymentRequestResponse = {
@@ -270,7 +270,7 @@ export type ListPaymentRequestResponse = {
         page: number,
         pageCount: number
     }
-} | PaymentRequestError)
+} | PaystackResponseError)
 
 
 export type FetchPaymentRequestResponse = {
@@ -331,7 +331,7 @@ export type FetchPaymentRequestResponse = {
                 updatedAt: string | null;
                 pending_amount: number;
             }
-        } | PaymentRequestError
+        } | PaystackResponseError
     )
 
 export type VeryifyPaymentRequestResponse = {
@@ -380,13 +380,13 @@ export type VeryifyPaymentRequestResponse = {
         };
         pending_amount: number;
     }
-} | PaymentRequestError)
+} | PaystackResponseError)
 
 export type SendNotificationPaymentRequestResponse = {
     message: string;
 } & ({
     status: true
-} | PaymentRequestError)
+} | PaystackResponseError)
 
 export type TotalPaymentRequestResponse = { message: string; } & ({
     status: true;
@@ -404,7 +404,7 @@ export type TotalPaymentRequestResponse = { message: string; } & ({
             amount: number;
         }>;
     };
-} | PaymentRequestError)
+} | PaystackResponseError)
 
 export type FinalizePaymentRequestResponse = { message: string; } & ({
     status: true;
@@ -443,7 +443,7 @@ export type FinalizePaymentRequestResponse = { message: string; } & ({
         created_at: string;
         pending_amount: number;
     };
-} | PaymentRequestError)
+} | PaystackResponseError)
 
 
 export type UpdatePaymentRequestResponse = { message: string; } & ({
@@ -482,11 +482,11 @@ export type UpdatePaymentRequestResponse = { message: string; } & ({
         };
         created_at: string;
     };
-} | PaymentRequestError)
+} | PaystackResponseError)
 
 export type ArchivePaymentRequestResponse = { message: string; } & ({
     status: true;
-} | PaymentRequestError)
+} | PaystackResponseError)
 
 /**
  * The first_name, last_name and phone are optional parameters. However, when creating a customer that would be assigned 
@@ -529,7 +529,7 @@ export type CreateCustomerResponse = { message: string } & (
             createdAt: string;
             updatedAt: string;
         }
-    } | PaymentRequestError)
+    } | PaystackResponseError)
 
 export type ListCustomerData = {
 
@@ -583,7 +583,7 @@ export type ListCustomerResponse = { message: string } & ({
     status: true;
     data: Customer[];
     meta: Meta;
-} | PaymentRequestError)
+} | PaystackResponseError)
 
 
 type Authorization = {
@@ -632,7 +632,7 @@ export type FetchCustomerResponse = {
 } & ({
     status: true;
     data: FetchResponseData;
-} | PaymentRequestError)
+} | PaystackResponseError)
 
 export type UpdateCustomerData = {
     /** Customer's first name */
@@ -671,7 +671,7 @@ export type UpdateCustomerResponse = { message: string } & ({
         createdAt: string;
         updatedAt: string;
     }
-} | PaymentRequestError)
+} | PaystackResponseError)
 
 export type ValidateCustomerData = {
 
@@ -751,4 +751,8 @@ export type WhitelistBlacklistCustomerResponse = {
         updatedAt: string;
     }
 }
-    | PaymentRequestError)
+    | PaystackResponseError)
+
+export type DeactivateAuthorizationResponse = { message: string } & ({
+    status: true;
+} | PaystackResponseError)
