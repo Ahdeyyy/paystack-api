@@ -117,7 +117,7 @@ const archived_request = await paystack.payment_request.archive("request id")
   - [x] Archive payment request
   - [x] Tests
 
-- [ ] Add support for customers
+- [x] Add support for customers
 
   - [x] Create Customer
   - [x] List Customers
