@@ -20,6 +20,7 @@ test("list customers", async () => {
     expect(response.status).toBe(true);
     if (response.status) {
         expect(response.data).toBeInstanceOf(Array)
+        expect(response.meta.perPage).toBe(10)
     }
 });
 

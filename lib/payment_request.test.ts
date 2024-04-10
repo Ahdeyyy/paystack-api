@@ -16,6 +16,9 @@ test(
     "list payment request", async () => {
         let response = await paystack().payment_request.list()
         expect(response.status).toBe(true)
+        if (response.status) {
+            expect(response.meta.perPage).toBe(50)
+        }
     })
 
 test(

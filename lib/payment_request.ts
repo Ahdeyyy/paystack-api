@@ -83,10 +83,18 @@ export class PaymentRequest {
             headers: headers
         })
 
-        const resp = await json_resp.json();
-        const response: ListPaymentRequestResponse = resp as ListPaymentRequestResponse;
+        const response = await json_resp.json();
+        const response_data: ListPaymentRequestResponse = response as ListPaymentRequestResponse;
 
-        return response;
+
+        if (response_data.status) {
+            response_data.meta.page = Number(response_data.meta.page)
+            response_data.meta.perPage = Number(response_data.meta.perPage)
+            response_data.meta.total = Number(response_data.meta.total)
+            response_data.meta.skipped = Number(response_data.meta.skipped)
+            response_data.meta.pageCount = Number(response_data.meta.pageCount)
+        }
+        return response_data;
     }
 
     async fetch(id: string): Promise<FetchPaymentRequestResponse> {

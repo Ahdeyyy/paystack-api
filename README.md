@@ -128,6 +128,13 @@ const archived_request = await paystack.payment_request.archive("request id")
   - [x] Deactivate Authorization
   - [x] Tests
 
+- [ ] Add support for Products
+  - [x] Create Product
+  - [x] List Products
+  - [ ] Fetch Product
+  - [ ] Update Product
+  - [ ] Tests
+
 ## Testing
 
 To run the tests, clone the repository

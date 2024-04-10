@@ -38,7 +38,7 @@ export class Customer {
      * @param query
      * @returns 
      */
-    async list(query: ListCustomerData): Promise<ListCustomerResponse> {
+    async list(query: ListCustomerData = { perPage: 50, page: 1 }): Promise<ListCustomerResponse> {
         const header = this.get_headers();
         const url = new URL(this.endpoint);
 
@@ -55,6 +55,10 @@ export class Customer {
 
         const response_data = await response.json() as ListCustomerResponse;
 
+
+        if (response_data.status) {
+            response_data.meta.perPage = Number(response_data.meta.perPage)
+        }
         return response_data;
     }
 
