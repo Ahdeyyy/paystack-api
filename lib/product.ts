@@ -1,4 +1,4 @@
-import type { CreateProductData, CreateProductResponse, FetchProductResponse, ListProductQuery, ListProductResponse } from "./types";
+import type { CreateProductData, CreateProductResponse, FetchProductResponse, ListProductQuery, ListProductResponse, UpdateProductData, UpdateProductResponse } from "./types";
 
 export class Product {
   private secret_key: string;
@@ -56,5 +56,15 @@ export class Product {
     const response_data = await response.json() as FetchProductResponse;
     return response_data
   }
-  async update() { }
+  async update(id: number, data: UpdateProductData): Promise<UpdateProductResponse> {
+    const headers = this.get_headers()
+    const url = `${this.endpoint}/${id}`
+    const response = await fetch(url, {
+      method: "PUT",
+      headers: headers,
+      body: JSON.stringify(data)
+    })
+    const response_data = await response.json() as UpdateProductResponse
+    return response_data
+  }
 }

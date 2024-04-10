@@ -42,3 +42,15 @@ test("fetch a product", async () => {
         }
     }
 })
+
+test("update a product", async () => {
+    const pro = await product()
+    expect(pro.status).toBe(true)
+    if (pro.status) {
+        const response = await paystack().product.update(pro.data.id, { price: 69420 })
+        expect(response.status).toBe(true)
+        if (response.status) {
+            expect(response.data.price).toBe(69420)
+        }
+    }
+})
