@@ -4,7 +4,10 @@ import { Paystack } from "./paystack"
 
 
 const paystack = mock(() => new Paystack(import.meta.env.PAYSTACK_SECRET_KEY ?? ""))
-// const customer = mock(async () => await paystack().customer.create({ email: "customer@mail.com" }))
+const product = mock(async () => await paystack().product.create({
+    name: "mithril", description: "a rare and mythical item", price: 9999999999, currency: "NGN"
+})
+)
 // const blacklist_customer = mock(async () => await paystack().customer.create({ email: "blacklist@me.co" }))
 
 test("create product", async () => {
@@ -23,5 +26,19 @@ test("list products", async () => {
     if (response.status) {
         expect(response.data).toBeInstanceOf(Array)
         expect(response.meta.perPage).toBe(10)
+    }
+})
+
+test("fetch a product", async () => {
+    const pro = await product()
+    expect(pro.status).toBe(true)
+    if (pro.status) {
+        let response = await paystack().product.fetch(pro.data.id)
+        expect(response.status).toBe(true)
+        if (response.status) {
+            expect(response.data.id).toBe(pro.data.id)
+            expect(response.data.name).toBe(pro.data.name)
+            expect(response.data.description).toBe(pro.data.description)
+        }
     }
 })

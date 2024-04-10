@@ -913,3 +913,44 @@ export type ListProductResponse = { message: string; } & ({
         pageCount: number;
     }
 } | PaystackResponseError)
+
+export type FetchProductResponse = { message: string; } & ({
+    status: true;
+    data: {
+        digital_assets: any[];
+        integration: number;
+        name: string;
+        description: string;
+        product_code: string;
+        price: number;
+        currency: Currency;
+        quantity: number;
+        quantity_sold: number | null;
+        type: string;
+        files: any | null;
+        file_path: any | null;
+        is_shippable: boolean;
+        shipping_fields: ShippingFields;
+        unlimited: boolean;
+        domain: string;
+        active: boolean;
+        features: any | null;
+        in_stock: boolean;
+        metadata: {
+            background_color: string;
+        };
+        slug: string;
+        success_message: string | null;
+        redirect_url: string | null;
+        split_code: string | null;
+        notification_emails: string | null;
+        minimum_orderable: number;
+        maximum_orderable: number | null;
+        low_stock_alert: boolean;
+        stock_threshold: any | null;
+        expires_in: any | null;
+        id: number;
+        createdAt: string;
+        updatedAt: string;
+    }
+} | PaystackResponseError)

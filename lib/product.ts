@@ -1,8 +1,8 @@
-import type { CreateProductData, CreateProductResponse, ListProductQuery, ListProductResponse } from "./types";
+import type { CreateProductData, CreateProductResponse, FetchProductResponse, ListProductQuery, ListProductResponse } from "./types";
 
 export class Product {
   private secret_key: string;
-  endpoint: string = "https://api.paystack.co/product/";
+  endpoint: string = "https://api.paystack.co/product";
 
   constructor(secret_key: string) {
     this.secret_key = secret_key;
@@ -46,6 +46,15 @@ export class Product {
     }
     return response_data;
   }
-  async fetch() { }
+  async fetch(id: number): Promise<FetchProductResponse> {
+    const headers = this.get_headers()
+    const url = `${this.endpoint}/${id}`
+    const response = await fetch(url, {
+      method: "GET",
+      headers: headers,
+    })
+    const response_data = await response.json() as FetchProductResponse;
+    return response_data
+  }
   async update() { }
 }
