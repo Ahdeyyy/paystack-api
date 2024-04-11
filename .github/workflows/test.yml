@@ -15,12 +15,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Install bun
         uses: oven-sh/setup-bun@v1
-        run: export PAYSTACK_SECRET=${{secrets.PAYSTACK_SECRET}}
-        run: export CUSTOMER_CODE=${{ secrets.CUSTOMER_CODE }}
         env:
           PAYSTACK_SECRET: ${{ secrets.PAYSTACK_SECRET }}
           CUSTOMER_CODE: ${{ secrets.CUSTOMER_CODE }}
       - name: Install dependencies
-        run: bun install
+        run: export export CUSTOMER_CODE=${{ secrets.CUSTOMER_CODE }} && export PAYSTACK_SECRET=${{secrets.PAYSTACK_SECRET}} && bun install
       - name: Test package
         run: bun test
