@@ -15,10 +15,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Install bun
         uses: oven-sh/setup-bun@v1
-      - name: Install dependencies
-        run: bun install
-      - name: Lint and build package
-        run: bun test
         env:
           PAYSTACK_SECRET: ${{ secrets.PAYSTACK_SECRET }}
           CUSTOMER_CODE: ${{ secrets.CUSTOMER_CODE }}
+      - name: Install dependencies
+        run: bun install
+      - name: Test package
+        run: bun test
