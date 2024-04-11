@@ -1,5 +1,5 @@
 {
-  "name": "@ahdeyy/paystack-api",
+  "name": "paystack-wrapper-api",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -22,5 +22,9 @@
   "dependencies": {
     "tsc": "^2.0.4",
     "tsup": "^8.0.2"
+  }, 
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ahdeyyy/paystack-api.git"
   }
 }
