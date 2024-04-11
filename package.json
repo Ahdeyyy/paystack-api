@@ -8,7 +8,7 @@
   "description": "an api wrapper for paystack's api with types",
   "scripts": {
     "build": "bunx tsup index.ts --format cjs,esm --dts",
-    "release": "bun run build && changeset publish",
+    "release": "bun run build && changeset publish --no-git-tags",
     "lint": "tsc"
   },
   "license": "GPL-3.0",
