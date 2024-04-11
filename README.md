@@ -22,7 +22,9 @@ A wrapper for the Paystack API with types.
     yarn add @ahdeyy/paystack
 ```
 
-```BUN
+### BUN
+
+```bash
     bun add @ahdeyy/paystack
 ```
 
@@ -37,8 +39,7 @@ import { Paystack } from "@ahdeyy/paystack"
 
 // create the paystack object
 
-const paystack = new Paystack({secret_key: secret})
-
+const paystack = new Paystack({ secret_key: secret })
 
 const created_request = await paystack.payment_request.create({
   amount: 10000,
@@ -49,11 +50,10 @@ const created_request = await paystack.payment_request.create({
 
 // Check the status of the response
 if (created_request.status) {
-  // Work with the response data 
+  // Work with the response success data
 } else {
   // Work with the response error data
 }
-
 ```
 
 ### Payment request
@@ -61,7 +61,6 @@ if (created_request.status) {
 #### Create payment request
 
 ```typescript
-
 const paystack = new Paystack({
   secret_key: secret_key,
 })
@@ -129,20 +128,26 @@ const finalized_request = await paystack.payment_request.finalize("request id")
 const archived_request = await paystack.payment_request.archive("request id")
 ```
 
-### Customer 
+### Customer
 
-#### Create customer 
+#### Create customer
 
 ```typescript
-let customer = await paystack.customer.create({ email: "test@mail.com", first_name: "john", last_name: "doe" });
+let customer = await paystack.customer.create({
+  email: "test@mail.com",
+  first_name: "john",
+  last_name: "doe",
+})
 ```
 
-#### List customers 
+#### List customers
+
 ```typescript
-let customer = await paystack.customer.list({ perPage: 10, page: 1 });
+let customer = await paystack.customer.list({ perPage: 10, page: 1 })
 ```
 
 #### Fetch customer
+
 ```typescript
 let customer = await paystack.customer.fetch(customers_email)
 ```
@@ -150,32 +155,38 @@ let customer = await paystack.customer.fetch(customers_email)
 #### Validate customer
 
 ```typescript
-let customer  = await paystack.customer.validate(customer_code, { country, 
-    type, 
-    account_number, 
-    bvn, 
-    bank_code, 
-    first_name,
-    last_name 
-  })
+let customer = await paystack.customer.validate(customer_code, {
+  country,
+  type,
+  account_number,
+  bvn,
+  bank_code,
+  first_name,
+  last_name,
+})
 ```
 
 #### Update customer
 
 ```typescript
-let customer  = await paystack.customer.update(customer_code, { phone })
+let customer = await paystack.customer.update(customer_code, { phone })
 ```
 
 #### Whitelist/Blacklist customer
 
 ```typescript
-let customer = await paystack.customer.whitelist_blacklist({ customer: customer_code, risk_action: "deny" })
+let customer = await paystack.customer.whitelist_blacklist({
+  customer: customer_code,
+  risk_action: "deny",
+})
 ```
 
 #### Deactivate Authorization
 
 ```typescript
-let customer = await paystack.customer.deactivate_authorization(Authorization_code)
+let customer = await paystack.customer.deactivate_authorization(
+  Authorization_code
+)
 ```
 
 ### Product
@@ -183,7 +194,12 @@ let customer = await paystack.customer.deactivate_authorization(Authorization_co
 #### Create product
 
 ```typescript
-let product = await paystack.product.create({ name: "sakura", description: "cherry blossom", price: 10000, currency: "NGN" })
+let product = await paystack.product.create({
+  name: "sakura",
+  description: "cherry blossom",
+  price: 10000,
+  currency: "NGN",
+})
 ```
 
 #### List products
@@ -201,11 +217,8 @@ let product = await paystack.product.fetch(product_id)
 #### Update product
 
 ```typescript
-let product = await paystack.product.update(product_id, { price:69420  })
+let product = await paystack.product.update(product_id, { price: 69420 })
 ```
-
-
-
 
 ## ROADMAP
 
@@ -234,6 +247,7 @@ let product = await paystack.product.update(product_id, { price:69420  })
   - [x] Tests
 
 - [x] Products
+
   - [x] Create Product
   - [x] List Products
   - [x] Fetch Product
@@ -265,7 +279,7 @@ let product = await paystack.product.update(product_id, { price:69420  })
 To run the tests, clone the repository
 
 ```bash
-    git clone @ahdeyy/paystack
+    git clone https://github.com/Ahdeyyy/paystack-api.git
 ```
 
 ```bash
