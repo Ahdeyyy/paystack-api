@@ -1,18 +1,25 @@
 {
   "name": "paystack-api",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "version": "0.0.1",
   "description": "an api wrapper for paystack's api with types",
-  "build": "bun build ./src/index.ts --outdir ./dist",
+  "scripts": {
+    "build": "bunx tsup index.ts --format cjs,esm --dts",
+    "release": "bun run build && changeset publish",
+    "lint": "tsc"
+  },
   "license": "GPL-3",
-  "module": "index.ts",
-  "type": "module",
   "devDependencies": {
+    "@changesets/cli": "^2.27.1",
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "tsc": "^2.0.4",
     "tsup": "^8.0.2"
   }
 }
