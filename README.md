@@ -7,33 +7,60 @@ A wrapper for the Paystack API with types.
 ### NPM
 
 ```bash
-    npm install //TODO
+    npm install @ahdeyy/paystack
 ```
 
 ### PNPM
 
 ```bash
-    pnpm add //TODO
+    pnpm add @ahdeyy/paystack
 ```
 
 ### YARN
 
 ```bash
-    yarn add //TODO
+    yarn add @ahdeyy/paystack
 ```
 
 ```BUN
-    bun add //TODO
+    bun add @ahdeyy/paystack
 ```
 
 ## Usage
+
+### Patterns
+
+After using an API, check if the status of the call is true to work with the success response
+
+```typescript
+import { Paystack } from "@ahdeyy/paystack"
+
+// create the paystack object
+
+const paystack = new Paystack({secret_key: secret})
+
+
+const created_request = await paystack.payment_request.create({
+  amount: 10000,
+  description: "Payment for goods",
+  due_date: "2022-12-31",
+  customer: "customer id",
+})
+
+// Check the status of the response
+if (created_request.status) {
+  // Work with the response data 
+} else {
+  // Work with the response error data
+}
+
+```
 
 ### Payment request
 
 #### Create payment request
 
 ```typescript
-import { Paystack } from "//TODO"
 
 const paystack = new Paystack({
   secret_key: secret_key,
@@ -102,9 +129,87 @@ const finalized_request = await paystack.payment_request.finalize("request id")
 const archived_request = await paystack.payment_request.archive("request id")
 ```
 
+### Customer 
+
+#### Create customer 
+
+```typescript
+let customer = await paystack.customer.create({ email: "test@mail.com", first_name: "john", last_name: "doe" });
+```
+
+#### List customers 
+```typescript
+let customer = await paystack.customer.list({ perPage: 10, page: 1 });
+```
+
+#### Fetch customer
+```typescript
+let customer = await paystack.customer.fetch(customers_email)
+```
+
+#### Validate customer
+
+```typescript
+let customer  = await paystack.customer.validate(customer_code, { country, 
+    type, 
+    account_number, 
+    bvn, 
+    bank_code, 
+    first_name,
+    last_name 
+  })
+```
+
+#### Update customer
+
+```typescript
+let customer  = await paystack.customer.update(customer_code, { phone })
+```
+
+#### Whitelist/Blacklist customer
+
+```typescript
+let customer = await paystack.customer.whitelist_blacklist({ customer: customer_code, risk_action: "deny" })
+```
+
+#### Deactivate Authorization
+
+```typescript
+let customer = await paystack.customer.deactivate_authorization(Authorization_code)
+```
+
+### Product
+
+#### Create product
+
+```typescript
+let product = await paystack.product.create({ name: "sakura", description: "cherry blossom", price: 10000, currency: "NGN" })
+```
+
+#### List products
+
+```typescript
+let product = await paystack.product.list({ perPage: 10, page: 1 })
+```
+
+#### Fetch product
+
+```typescript
+let product = await paystack.product.fetch(product_id)
+```
+
+#### Update product
+
+```typescript
+let product = await paystack.product.update(product_id, { price:69420  })
+```
+
+
+
+
 ## ROADMAP
 
-- [x] Add support for payment requests
+- [x] Requests
 
   - [x] Create payment request
   - [x] Update payment request
@@ -117,7 +222,7 @@ const archived_request = await paystack.payment_request.archive("request id")
   - [x] Archive payment request
   - [x] Tests
 
-- [x] Add support for customers
+- [x] Customers
 
   - [x] Create Customer
   - [x] List Customers
@@ -128,19 +233,39 @@ const archived_request = await paystack.payment_request.archive("request id")
   - [x] Deactivate Authorization
   - [x] Tests
 
-- [x] Add support for Products
+- [x] Products
   - [x] Create Product
   - [x] List Products
   - [x] Fetch Product
   - [x] Update Product
   - [x] Tests
 
+- [ ] Transactions
+- [ ] Transaction Splits
+- [ ] Terminal
+- [ ] Dedicated Virtual Accounts
+- [ ] Apple Pay
+- [ ] Subaccounts
+- [ ] Plans
+- [ ] Subscriptions
+- [ ] Payment Pages
+- [ ] Settlements
+- [ ] Transfer Recipients
+- [ ] Transfers
+- [ ] Transfers Control
+- [ ] Bulk Charges
+- [ ] Integration
+- [ ] Charge
+- [ ] Disputes
+- [ ] Refunds
+- [ ] Verification
+
 ## Testing
 
 To run the tests, clone the repository
 
 ```bash
-    git clone //TODO
+    git clone @ahdeyy/paystack
 ```
 
 ```bash
