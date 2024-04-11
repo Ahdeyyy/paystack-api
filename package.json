@@ -4,7 +4,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "version": "0.1.0",
-  "private": false,
+  "public": true,
   "description": "an api wrapper for paystack's api with types",
   "scripts": {
     "build": "bunx tsup index.ts --format cjs,esm --dts",
@@ -34,5 +34,5 @@
   "directories": {
     "lib": "lib"
   },
-  "author": ""
+  "author": "ahdeyy"
 }
