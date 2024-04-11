@@ -1,5 +1,11 @@
 # paystack-api
 
+## 0.1.2
+
+### Patch Changes
+
+- 8d499bf: fixed typos in the readme documentation
+
 ## 0.1.1
 
 ### Patch Changes
