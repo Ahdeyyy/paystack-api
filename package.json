@@ -1,5 +1,5 @@
 {
-  "name": "paystack-wrapper-api",
+  "name": "@ahdeyy/paystack",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     "release": "bun run build && changeset publish",
     "lint": "tsc"
   },
-  "license": "GPL-3",
+  "license": "GPL-3.0",
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
     "@types/bun": "latest"
@@ -22,9 +22,17 @@
   "dependencies": {
     "tsc": "^2.0.4",
     "tsup": "^8.0.2"
-  }, 
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ahdeyyy/paystack-api.git"
-  }
+    "url": "git+https://github.com/Ahdeyyy/paystack-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ahdeyyy/paystack-api/issues"
+  },
+  "homepage": "https://github.com/Ahdeyyy/paystack-api#readme",
+  "directories": {
+    "lib": "lib"
+  },
+  "author": ""
 }
