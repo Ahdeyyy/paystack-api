@@ -1,9 +1,10 @@
 {
-  "name": "paystack-api",
+  "name": "@ahdeyy/paystack-api",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "version": "0.0.1",
+  "author": "ahdeyy",
   "description": "an api wrapper for paystack's api with types",
   "scripts": {
     "build": "bunx tsup index.ts --format cjs,esm --dts",
