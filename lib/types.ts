@@ -56,7 +56,7 @@ export type ListPaymentRequestData = {
     status: PaymentRequestStatus,
     paid: boolean,
     paid_at: string | null,
-    metadata: null,
+    metadata: Record<string, unknown> | null,
     notifications: Array<Notification>,
     offline_reference: string,
     customer: CustomerData,
@@ -248,7 +248,7 @@ export type CreatePaymentRequestResponse = {
         request_code: string;
         status: PaymentRequestStatus;
         paid: false;
-        metadata: null;
+        metadata: Record<string, unknown> | null;
         notifications: Array<any>;
         offline_reference: string;
         created_at: string;
@@ -294,8 +294,7 @@ export type FetchPaymentRequestResponse = {
                 status: PaymentRequestStatus;
                 paid: boolean;
                 paid_at: string | null;
-                // TODO: add its proper type
-                metadata: null,
+                metadata: Record<string, unknown> | null,
                 has_invoice: boolean;
                 invoice_number: number;
                 offline_reference: string;
@@ -355,7 +354,7 @@ export type VeryifyPaymentRequestResponse = {
         status: PaymentRequestStatus;
         paid: boolean;
         paid_at: string | null;
-        metadata: null;
+        metadata: Record<string, unknown> | null;
         notifications: Array<Notification>;
         offline_reference: string;
         customer: {
@@ -424,7 +423,7 @@ export type FinalizePaymentRequestResponse = { message: string; } & ({
         status: string;
         paid: boolean;
         paid_at: string | null;
-        metadata: null;
+        metadata: Record<string, unknown> | null;
         notifications: Array<Notification>;
         offline_reference: string;
         customer: {
@@ -464,7 +463,7 @@ export type UpdatePaymentRequestResponse = { message: string; } & ({
         status: PaymentRequestStatus;
         paid: boolean;
         paid_at: string | null;
-        metadata: null;
+        metadata: Record<string, unknown> | null;
         notifications: Array<Notification>;
         offline_reference: string;
         customer: {

@@ -1,17 +1,26 @@
-import { PaymentRequest } from "./payment_request";
 import { Paystack } from "./paystack";
-import type { CreatePaymentRequestResponse, PaymentRequestData, LineItem, PaystackData, PaystackResponse } from "./types";
+import type {
+    LineItem,
+    PaystackData,
+    Currency,
+    TaxData,
+    RiskAction,
+    Notification,
+    PaymentRequestStatus
+
+
+} from "./types";
 
 export {
-    PaymentRequest,
     Paystack,
-
 };
 
 export type {
-    CreatePaymentRequestResponse,
-    PaymentRequestData,
     LineItem,
     PaystackData,
-    PaystackResponse
+    Currency,
+    TaxData,
+    RiskAction,
+    Notification,
+    PaymentRequestStatus
 }

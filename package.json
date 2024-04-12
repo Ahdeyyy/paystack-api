@@ -8,7 +8,7 @@
   "description": "an api wrapper for paystack's api with types",
   "scripts": {
     "build": "bunx tsup index.ts --format cjs,esm --dts",
-    "release": "bun run build && changeset publish --no-git-tags",
+    "release": "bun run build && changeset publish",
     "lint": "tsc"
   },
   "license": "GPL-3.0",
@@ -34,5 +34,12 @@
   "directories": {
     "lib": "lib"
   },
-  "author": "ahdeyy"
+  "author": "ahdeyy <ahdeyyy21@gmail.com> (https://ahdeyy.vercel.app)",
+  "keywords": [
+    "paystack",
+    "api",
+    "api wrapper",
+    "wrapper",
+    "online payment"
+  ]
 }
