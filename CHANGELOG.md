@@ -1,5 +1,11 @@
 # paystack-api
 
+## 0.1.3
+
+### Patch Changes
+
+- 7947b4f: exposed the necessary types to users
+
 ## 0.1.2
 
 ### Patch Changes
