@@ -9,7 +9,7 @@
   "scripts": {
     "build": "bunx tsup index.ts --format cjs,esm --dts",
     "release": "bun run build && changeset publish",
-    "lint": "tsc"
+    "lint": "bunx tsc"
   },
   "license": "GPL-3.0",
   "devDependencies": {
