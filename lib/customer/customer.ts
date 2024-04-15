@@ -1,4 +1,18 @@
-import type { CreateCustomerData, CreateCustomerResponse, DeactivateAuthorizationResponse, FetchCustomerResponse, ListCustomerData, ListCustomerResponse, RiskAction, UpdateCustomerData, UpdateCustomerResponse, ValidateCustomerData, ValidateCustomerResponse, WhitelistBlacklistCustomerData, WhitelistBlacklistCustomerResponse } from "./types";
+import type {
+    CreateCustomerData,
+    CreateCustomerResponse,
+    DeactivateAuthorizationResponse,
+    FetchCustomerResponse,
+    ListCustomerData,
+    ListCustomerResponse,
+    RiskAction,
+    UpdateCustomerData,
+    UpdateCustomerResponse,
+    ValidateCustomerData,
+    ValidateCustomerResponse,
+    WhitelistBlacklistCustomerData,
+    WhitelistBlacklistCustomerResponse
+} from "./types";
 
 export class Customer {
     private secret_key: string;

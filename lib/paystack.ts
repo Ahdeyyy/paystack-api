@@ -1,6 +1,6 @@
-import { PaymentRequest } from "./payment_request";
-import { Customer } from "./customer";
-import { Product } from "./product";
+import { Customer } from "./customer/customer";
+import { Product } from "./product/product";
+import { PaymentRequest } from "./payment request/payment_request";
 
 export class Paystack {
   private secret_key: string;
