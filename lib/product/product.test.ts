@@ -1,6 +1,6 @@
 
 import { test, mock, expect } from "bun:test"
-import { Paystack } from "./paystack"
+import { Paystack } from "../paystack"
 
 
 const paystack = mock(() => new Paystack(import.meta.env.PAYSTACK_SECRET_KEY ?? ""))
