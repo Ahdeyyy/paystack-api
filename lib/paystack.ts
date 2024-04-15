@@ -14,8 +14,4 @@ export class Paystack {
     this.customer = new Customer(this.secret_key);
     this.product = new Product(this.secret_key);
   }
-
-  get_endpoint(): string {
-    return this.endpoint;
-  }
 }
