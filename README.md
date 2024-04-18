@@ -258,7 +258,7 @@ const product = await paystack.product.update(product_id, { price: 69420 })
   - [x] Create Dedicated Virtual Account
   - [x] Assign Dedicated Virtual Account
   - [x] List Dedicated Accounts
-  - [ ] Fetch Dedicated Account
+  - [x] Fetch Dedicated Account
   - [ ] Requery Dedicated Account
   - [ ] Deactivate Dedicated Account
   - [ ] Split Dedicated Account Transaction
