@@ -133,7 +133,7 @@ const archived_request = await paystack.payment_request.archive("request id")
 #### Create customer
 
 ```typescript
-let customer = await paystack.customer.create({
+const customer = await paystack.customer.create({
   email: "test@mail.com",
   first_name: "john",
   last_name: "doe",
@@ -143,19 +143,19 @@ let customer = await paystack.customer.create({
 #### List customers
 
 ```typescript
-let customer = await paystack.customer.list({ perPage: 10, page: 1 })
+const customer = await paystack.customer.list({ perPage: 10, page: 1 })
 ```
 
 #### Fetch customer
 
 ```typescript
-let customer = await paystack.customer.fetch(customers_email)
+const customer = await paystack.customer.fetch(customers_email)
 ```
 
 #### Validate customer
 
 ```typescript
-let customer = await paystack.customer.validate(customer_code, {
+const customer = await paystack.customer.validate(customer_code, {
   country,
   type,
   account_number,
@@ -169,13 +169,13 @@ let customer = await paystack.customer.validate(customer_code, {
 #### Update customer
 
 ```typescript
-let customer = await paystack.customer.update(customer_code, { phone })
+const customer = await paystack.customer.update(customer_code, { phone })
 ```
 
 #### Whitelist/Blacklist customer
 
 ```typescript
-let customer = await paystack.customer.whitelist_blacklist({
+const customer = await paystack.customer.whitelist_blacklist({
   customer: customer_code,
   risk_action: "deny",
 })
@@ -184,7 +184,7 @@ let customer = await paystack.customer.whitelist_blacklist({
 #### Deactivate Authorization
 
 ```typescript
-let customer = await paystack.customer.deactivate_authorization(
+const customer = await paystack.customer.deactivate_authorization(
   Authorization_code
 )
 ```
@@ -194,7 +194,7 @@ let customer = await paystack.customer.deactivate_authorization(
 #### Create product
 
 ```typescript
-let product = await paystack.product.create({
+const product = await paystack.product.create({
   name: "sakura",
   description: "cherry blossom",
   price: 10000,
@@ -205,19 +205,19 @@ let product = await paystack.product.create({
 #### List products
 
 ```typescript
-let product = await paystack.product.list({ perPage: 10, page: 1 })
+const product = await paystack.product.list({ perPage: 10, page: 1 })
 ```
 
 #### Fetch product
 
 ```typescript
-let product = await paystack.product.fetch(product_id)
+const product = await paystack.product.fetch(product_id)
 ```
 
 #### Update product
 
 ```typescript
-let product = await paystack.product.update(product_id, { price: 69420 })
+const product = await paystack.product.update(product_id, { price: 69420 })
 ```
 
 ## ROADMAP
@@ -254,10 +254,21 @@ let product = await paystack.product.update(product_id, { price: 69420 })
   - [x] Update Product
   - [x] Tests
 
+- [ ] Dedicated Virtual Accounts
+  - [x] Create Dedicated Virtual Account
+  - [x] Assign Dedicated Virtual Account
+  - [x] List Dedicated Accounts
+  - [x] Fetch Dedicated Account
+  - [x] Requery Dedicated Account
+  - [x] Deactivate Dedicated Account
+  - [x] Split Dedicated Account Transaction
+  - [x] Remove Split from Dedicated Account
+  - [x] Fetch Bank Providers
+  - [ ] Tests
+
 - [ ] Transactions
 - [ ] Transaction Splits
 - [ ] Terminal
-- [ ] Dedicated Virtual Accounts
 - [ ] Apple Pay
 - [ ] Subaccounts
 - [ ] Plans
@@ -273,6 +284,7 @@ let product = await paystack.product.update(product_id, { price: 69420 })
 - [ ] Disputes
 - [ ] Refunds
 - [ ] Verification
+- [ ] Miscellanous
 
 ## Testing
 

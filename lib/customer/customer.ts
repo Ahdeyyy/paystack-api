@@ -55,12 +55,12 @@ export class Customer {
     async list(query: ListCustomerData = { perPage: 50, page: 1 }): Promise<ListCustomerResponse> {
         const header = this.get_headers();
         const url = new URL(this.endpoint);
-
-        if (query.perPage) url.searchParams.set('perPage', query.perPage.toString())
-        if (query.page) url.searchParams.set('page', query.page.toString())
-
-        if (query.from) url.searchParams.set('from', query.from)
-        if (query.to) url.searchParams.set('to', query.to)
+        const keys = Object.keys(query)
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i] ?? ''
+            const value = query[key]
+            url.searchParams.set(key, value)
+        }
 
         const response = await fetch(url, {
             headers: header,

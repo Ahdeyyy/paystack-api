@@ -129,6 +129,8 @@ export type ListPaymentRequestQuery = {
     /** A timestamp at which to stop listing payment requests 
      * @example 2016-09-24T00:00:05.000Z, 2016-09-21 */
     to?: string;
+
+    [key: string]: any;
 }
 
 export type UpdatePaymentRequestData = {
