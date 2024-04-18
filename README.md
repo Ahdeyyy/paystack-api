@@ -224,11 +224,11 @@ const product = await paystack.product.update(product_id, { price: 69420 })
 
 #### Create DVA
 ```typescript
-    const response = await paystack().dva.create({ customer: import.meta.env.CUSTOMER_CODE ?? '' })
+    const response = await paystack.dva.create({ customer: import.meta.env.CUSTOMER_CODE ?? '' })
 ```
 #### Assign DVA
 ```typescript
-    const response = await paystack().dva.assign({
+    const response = await paystack.dva.assign({
         email: "janedoe@test.com",
         first_name: "Jane",
         middle_name: "Karen",
@@ -241,33 +241,49 @@ const product = await paystack.product.update(product_id, { price: 69420 })
 ```
 #### List DVA
 ```typescript
-    const response = await paystack().dva.list({ active: true, currency: "NGN" });
+    const response = await paystack.dva.list({ active: true, currency: "NGN" });
 ```
 #### Fetch DVA
 ```typescript
-    const response = await paystack().dva.fetch("foo")
+    const response = await paystack.dva.fetch("foo")
 ```
 #### Requery DVA
 ```typescript
-    const response = await paystack().dva.requery({ account_number: "98897", provider_slug: "wema-bank" });
+    const response = await paystack.dva.requery({ account_number: "98897", provider_slug: "wema-bank" });
 ```
 #### Deactivate DVA
 ```typescript
-    const response = await paystack().dva.deactivate("foo")
+    const response = await paystack.dva.deactivate("foo")
 ```
 #### Split DVA
 ```typescript
-    const response = await paystack().dva.split({ customer: "janey" })
+    const response = await paystack.dva.split({ customer: "janey" })
 ```
 
 #### Remove split DVA
 ```typescript
-    const response = await paystack().dva.remove_split("bar")
+    const response = await paystack.dva.remove_split("bar")
 ```
 #### Fetch bank providers
 ```typescript
-    const response = await paystack().dva.fetch_bank_providers();
+    const response = await paystack.dva.fetch_bank_providers();
 ```
+### Miscellanous
+
+#### List banks
+```typescript
+    const response = await paystack.miscellaneous.list_banks({ country: "nigeria", use_cursor: true, perPage: 40 })
+```
+#### List countries
+```typescript
+    const response = await paystack.miscellaneous.list_countries()
+```
+#### List states
+```typescript
+    const response = await paystack.miscellaneous.list_states("US")
+```
+
+
 
 ## ROADMAP
 
@@ -333,7 +349,7 @@ const product = await paystack.product.update(product_id, { price: 69420 })
 - [ ] Disputes
 - [ ] Refunds
 - [ ] Verification
-- [ ] Miscellanous
+- [x] Miscellanous
 
 ## Testing
 
