@@ -1,5 +1,11 @@
 # paystack-api
 
+## 0.1.5
+
+### Patch Changes
+
+- 86e659d: added miscellaneous endpoint
+
 ## 0.1.4
 
 ### Patch Changes
