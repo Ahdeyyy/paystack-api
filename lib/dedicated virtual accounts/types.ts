@@ -66,7 +66,7 @@ type CreateDVAResponseData = {
     account_number: string;
     assigned: boolean;
     currency: Currency;
-    metadata: any | null;
+    metadata: Record<string, unknown> | null;
     active: boolean;
     id: number;
     created_at: string;
@@ -142,12 +142,15 @@ export type ListDVAQuery = {
 
     /** The customer's ID */
     customer?: string;
+
+    [key: string]: any;
 }
 
 
 
 type SplitConfig = {
     subaccount: string;
+    split_code: string;
 };
 
 type ManagedAccount = {
@@ -207,7 +210,7 @@ type FetchResponseData = {
     last_name: string | null;
     email: string;
     phone: string | null;
-    metadata: any | null;
+    metadata: Record<string, unknown> | null;
     domain: string;
     customer_code: string;
     risk_action: RiskAction;
@@ -225,4 +228,91 @@ type FetchResponseData = {
 export type FetchDVAResponse = { message: string } & ({
     status: true;
     data: FetchResponseData
+} | PaystackResponseError)
+
+export type RequeryDVAQuery = {
+    /** Virtual account number to query */
+    account_number: string;
+
+    /** The bank's slug in lowercase, without spaces e.g. wema-bank */
+    provider_slug: string;
+
+    /** The day the transfer was made in YYYY-MM-DD format */
+    date?: string;
+
+    [key: string]: any;
+}
+
+export type RequeryDVAResponse = { message: string } & ({ status: true } | PaystackResponseError)
+
+export type DeactivateDVAResponseData = {
+    bank: Bank;
+    account_name: string;
+    account_number: string;
+    assigned: boolean;
+    currency: Currency;
+    metadata: Record<string, unknown> | null;
+    active: boolean;
+    id: number;
+    created_at: string;
+    updated_at: string;
+    assignment: Assignment;
+};
+
+export type DeactivateDVAResponse = { message: string } & ({
+    status: true;
+    data: DeactivateDVAResponseData;
+} | PaystackResponseError)
+
+export type SplitDVAData = {
+    /** Customer ID or code */
+    customer: string;
+
+    /** Subaccount code of the account you want to split the transaction with*/
+    subaccount?: string;
+
+    /** Split code consisting of the lists of accounts you want to split the transaction with */
+    split_code?: string;
+
+    /** The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint */
+    preferred_bank?: string;
+}
+
+export type SplitDVAResponseData = {
+    bank: Bank;
+    account_name: string;
+    account_number: string;
+    assigned: boolean;
+    currency: Currency;
+    metadata: Record<string, unknown> | null;
+    active: boolean;
+    id: number;
+    created_at: string;
+    updated_at: string;
+    assignment: Assignment;
+    split_config: SplitConfig;
+    customer: Customer;
+};
+
+export type SplitDVAResponse = { message: string } & ({
+    status: true;
+    data: SplitDVAResponseData;
+} | PaystackResponseError)
+
+
+type RemoveSplitDVAResponseData = {
+    id: number;
+    split_config: SplitConfig;
+    account_name: string;
+    account_number: string;
+    currency: Currency;
+    assigned: boolean;
+    active: boolean;
+    createdAt: string;
+    updatedAt: string;
+};
+
+export type RemoveSplitDVAResponse = { message: string } & ({
+    status: true;
+    data: RemoveSplitDVAResponseData
 } | PaystackResponseError)

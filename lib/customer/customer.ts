@@ -55,7 +55,6 @@ export class Customer {
     async list(query: ListCustomerData = { perPage: 50, page: 1 }): Promise<ListCustomerResponse> {
         const header = this.get_headers();
         const url = new URL(this.endpoint);
-
         const keys = Object.keys(query)
         for (let i = 0; i < keys.length; i++) {
             const key = keys[i] ?? ''

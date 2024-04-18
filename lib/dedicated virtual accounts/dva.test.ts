@@ -38,4 +38,26 @@ test("fetch DVA", async () => {
     let response = await paystack().dva.fetch("foo")
     expect(response.status).toBe(false)
 })
+test("requery DVA", async () => {
+    let response = await paystack().dva.requery({ account_number: "98897", provider_slug: "wema-bank" });
+    expect(response.status).toBe(false);
+    if (response.status) {
+        expect(response.message).toBeInstanceOf(String)
+    }
+});
 
+test("delete DVA", async () => {
+    let response = await paystack().dva.deactivate("foo")
+    expect(response.status).toBe(false)
+})
+
+test("split DVA", async () => {
+    let response = await paystack().dva.split({ customer: "janey" })
+    expect(response.status).toBe(false)
+})
+
+test("remove split DVA", async () => {
+    let response = await paystack().dva.remove_split("bar")
+    expect(response.status).toBe(false)
+
+})
