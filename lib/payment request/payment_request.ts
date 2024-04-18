@@ -69,14 +69,21 @@ export class PaymentRequest {
         const headers = this.get_headers()
         const url = new URL(this.endpoint)
 
-        if (query.perPage) url.searchParams.set('perPage', query.perPage.toString())
-        if (query.page) url.searchParams.set('page', query.page.toString())
-        if (query.customer) url.searchParams.set('customer', query.customer)
-        if (query.status) url.searchParams.set('status', query.status)
-        if (query.currency) url.searchParams.set('currency', query.currency)
-        if (query.include_archive) url.searchParams.set('include_archive', query.include_archive)
-        if (query.from) url.searchParams.set('from', query.from)
-        if (query.to) url.searchParams.set('to', query.to)
+        // if (query.perPage) url.searchParams.set('perPage', query.perPage.toString())
+        // if (query.page) url.searchParams.set('page', query.page.toString())
+        // if (query.customer) url.searchParams.set('customer', query.customer)
+        // if (query.status) url.searchParams.set('status', query.status)
+        // if (query.currency) url.searchParams.set('currency', query.currency)
+        // if (query.include_archive) url.searchParams.set('include_archive', query.include_archive)
+        // if (query.from) url.searchParams.set('from', query.from)
+        // if (query.to) url.searchParams.set('to', query.to)
+
+        const keys = Object.keys(query)
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i] ?? ''
+            const value = query[key]
+            url.searchParams.set(key, value)
+        }
 
         const json_resp = await fetch(url, {
             method: "GET",

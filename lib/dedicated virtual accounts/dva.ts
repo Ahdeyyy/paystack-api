@@ -45,6 +45,7 @@ export class DedicatedVirtualAccounts {
         return response_data;
     }
 
+    /** List dedicated virtual accounts available on your integration. */
     async list(query: ListDVAQuery): Promise<ListDVAResponse> {
         const keys = Object.keys(query)
         const url = new URL(this.endpoint)
