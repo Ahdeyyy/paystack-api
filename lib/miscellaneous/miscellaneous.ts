@@ -1,4 +1,4 @@
-import type { ListBanksQuery, ListBanksResponse } from "./types";
+import type { ListBanksQuery, ListBanksResponse, ListCountryResponse } from "./types";
 
 export class Miscellaneous {
     private secret_key: string;
@@ -24,6 +24,17 @@ export class Miscellaneous {
             method: "GET"
         })
         const response_data = await response.json() as ListBanksResponse
+        return response_data
+    }
+
+    /** Gets a list of countries that Paystack currently supports */
+    async list_countries(): Promise<ListCountryResponse> {
+        const url = "https://api.paystack.co/country"
+        const response = await fetch(url, {
+            headers: this.get_headers(),
+            method: "GET"
+        })
+        const response_data = await response.json() as ListCountryResponse
         return response_data
     }
 

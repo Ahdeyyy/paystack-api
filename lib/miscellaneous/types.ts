@@ -52,7 +52,7 @@ type BankData = {
     active: boolean;
     is_deleted: boolean;
     country: string;
-    currency: string;
+    currency: Currency;
     type: string;
     id: number;
     createdAt: string;
@@ -70,3 +70,34 @@ export type ListBanksResponse = { message: string } & ({
     data: BankData[];
     meta: Meta;
 } | PaystackResponseError)
+
+type IntegrationType = string;
+
+type PaymentMethod = string;
+
+type RelationshipData = {
+    type: string;
+    data: Array<(string | Currency | IntegrationType | PaymentMethod)>;
+};
+
+type Relationships = {
+    currency: RelationshipData;
+    integration_feature: RelationshipData;
+    integration_type: RelationshipData;
+    payment_method: RelationshipData;
+};
+
+type CountryData = {
+    id: number;
+    name: string;
+    iso_code: string;
+    default_currency_code: string;
+    integration_defaults: Object;
+    relationships: Relationships;
+};
+
+export type ListCountryResponse = {
+    status: boolean;
+    message: string;
+    data: CountryData[];
+};
