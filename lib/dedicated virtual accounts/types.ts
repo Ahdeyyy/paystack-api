@@ -177,3 +177,52 @@ export type ListDVAResponse = { message: string } & ({
     data: Array<ManagedAccount>;
     meta: Meta;
 } | PaystackResponseError)
+
+type Provider = {
+    id: number;
+    provider_slug: string;
+    bank_id: number;
+    bank_name: string;
+};
+
+
+type DedicatedAccount = {
+    id: number;
+    account_name: string;
+    account_number: string;
+    created_at: string;
+    updated_at: string;
+    currency: Currency;
+    active: boolean;
+    assigned: boolean;
+    provider: Provider;
+    assignment: Assignment;
+};
+
+type FetchResponseData = {
+    transactions: any[];
+    subscriptions: any[];
+    authorizations: any[];
+    first_name: string | null;
+    last_name: string | null;
+    email: string;
+    phone: string | null;
+    metadata: any | null;
+    domain: string;
+    customer_code: string;
+    risk_action: RiskAction;
+    id: number;
+    integration: number;
+    createdAt: string;
+    updatedAt: string;
+    created_at: string;
+    updated_at: string;
+    total_transactions: number;
+    total_transaction_value: any[];
+    dedicated_account: DedicatedAccount;
+};
+
+export type FetchDVAResponse = { message: string } & ({
+    status: true;
+    data: FetchResponseData
+} | PaystackResponseError)

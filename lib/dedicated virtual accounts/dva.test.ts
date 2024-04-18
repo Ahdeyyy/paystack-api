@@ -33,3 +33,9 @@ test("list DVA", async () => {
         expect(response.meta.perPage).toBe(10)
     }
 });
+
+test("fetch DVA", async () => {
+    let response = await paystack().dva.fetch("foo")
+    expect(response.status).toBe(false)
+})
+

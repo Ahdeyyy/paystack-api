@@ -1,4 +1,4 @@
-import type { AssignDVAData, AssignDVAResponse, CreateDVAData, CreateDVAResponse, ListDVAQuery, ListDVAResponse } from "./types";
+import type { AssignDVAData, AssignDVAResponse, CreateDVAData, CreateDVAResponse, FetchDVAResponse, ListDVAQuery, ListDVAResponse } from "./types";
 
 export class DedicatedVirtualAccounts {
     private endpoint: string = "https://api.paystack.co/dedicated_account";
@@ -61,6 +61,15 @@ export class DedicatedVirtualAccounts {
 
         const response_data = await response.json() as ListDVAResponse
 
+        return response_data
+    }
+
+    async fetch(dedicated_account_id: string): Promise<FetchDVAResponse> {
+        const response = await fetch(`${this.endpoint}/${dedicated_account_id}`, {
+            headers: this.get_headers(),
+            method: "GET"
+        })
+        const response_data = await response.json() as FetchDVAResponse
         return response_data
     }
 
