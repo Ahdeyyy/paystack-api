@@ -1,5 +1,11 @@
 # paystack-api
 
+## 0.1.4
+
+### Patch Changes
+
+- 1b82e0b: added dedicated virtual accounts endpoint
+
 ## 0.1.3
 
 ### Patch Changes
