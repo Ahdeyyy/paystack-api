@@ -220,6 +220,55 @@ const product = await paystack.product.fetch(product_id)
 const product = await paystack.product.update(product_id, { price: 69420 })
 ```
 
+### Dedicated Virtual Accounts
+
+#### Create DVA
+```typescript
+    const response = await paystack().dva.create({ customer: import.meta.env.CUSTOMER_CODE ?? '' })
+```
+#### Assign DVA
+```typescript
+    const response = await paystack().dva.assign({
+        email: "janedoe@test.com",
+        first_name: "Jane",
+        middle_name: "Karen",
+        last_name: "Doe",
+        phone: "+2348100000000",
+        preferred_bank: "test-bank",
+        country: "NG"
+
+    })
+```
+#### List DVA
+```typescript
+    const response = await paystack().dva.list({ active: true, currency: "NGN" });
+```
+#### Fetch DVA
+```typescript
+    const response = await paystack().dva.fetch("foo")
+```
+#### Requery DVA
+```typescript
+    const response = await paystack().dva.requery({ account_number: "98897", provider_slug: "wema-bank" });
+```
+#### Deactivate DVA
+```typescript
+    const response = await paystack().dva.deactivate("foo")
+```
+#### Split DVA
+```typescript
+    const response = await paystack().dva.split({ customer: "janey" })
+```
+
+#### Remove split DVA
+```typescript
+    const response = await paystack().dva.remove_split("bar")
+```
+#### Fetch bank providers
+```typescript
+    const response = await paystack().dva.fetch_bank_providers();
+```
+
 ## ROADMAP
 
 - [x] Requests

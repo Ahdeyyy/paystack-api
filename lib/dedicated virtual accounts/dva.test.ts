@@ -46,7 +46,7 @@ test("requery DVA", async () => {
     }
 });
 
-test("delete DVA", async () => {
+test("deactivate DVA", async () => {
     let response = await paystack().dva.deactivate("foo")
     expect(response.status).toBe(false)
 })
