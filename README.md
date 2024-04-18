@@ -263,7 +263,7 @@ const product = await paystack.product.update(product_id, { price: 69420 })
   - [x] Deactivate Dedicated Account
   - [x] Split Dedicated Account Transaction
   - [x] Remove Split from Dedicated Account
-  - [ ] Fetch Bank Providers
+  - [x] Fetch Bank Providers
   - [ ] Tests
 
 - [ ] Transactions

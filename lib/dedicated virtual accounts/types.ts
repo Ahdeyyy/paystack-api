@@ -316,3 +316,9 @@ export type RemoveSplitDVAResponse = { message: string } & ({
     status: true;
     data: RemoveSplitDVAResponseData
 } | PaystackResponseError)
+
+
+export type FetchBankProvidersDVAResponse = { message: string } & ({
+    status: true;
+    data: Array<Provider>;
+} | PaystackResponseError)

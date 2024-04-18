@@ -61,3 +61,7 @@ test("remove split DVA", async () => {
     expect(response.status).toBe(false)
 
 })
+test("fetch bank providers DVA", async () => {
+    let response = await paystack().dva.fetch_bank_providers();
+    expect(response.status).toBe(false)
+})
