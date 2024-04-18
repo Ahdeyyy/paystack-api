@@ -22,3 +22,12 @@ test("list countries", async () => {
         expect(response.data).toBeInstanceOf(Array)
     }
 })
+
+test("list states", async () => {
+    const response = await paystack().miscellaneous.list_states("US")
+    expect(response.status).toBe(true)
+
+    if (response.status) {
+        expect(response.data).toBeInstanceOf(Array)
+    }
+})

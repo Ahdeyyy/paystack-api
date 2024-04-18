@@ -1,4 +1,4 @@
-import type { ListBanksQuery, ListBanksResponse, ListCountryResponse } from "./types";
+import type { ListBanksQuery, ListBanksResponse, ListCountryResponse, ListStatesResponse } from "./types";
 
 export class Miscellaneous {
     private secret_key: string;
@@ -38,6 +38,19 @@ export class Miscellaneous {
         return response_data
     }
 
+
+    /** Get a list of states for a country for address verification */
+    async list_states(country: string): Promise<ListStatesResponse> {
+        const url = new URL("https://api.paystack.co/address_verification/states")
+        url.searchParams.set("country", country)
+
+        const response = await fetch(url, {
+            headers: this.get_headers(),
+            method: "GET"
+        })
+        const response_data = await response.json() as ListStatesResponse
+        return response_data
+    }
     private get_headers() {
         return {
             "Content-Type": "application/json",

@@ -96,8 +96,16 @@ type CountryData = {
     relationships: Relationships;
 };
 
-export type ListCountryResponse = {
-    status: boolean;
-    message: string;
+export type ListCountryResponse = { message: string } & ({
+    status: true;
     data: CountryData[];
-};
+} | PaystackResponseError)
+
+export type ListStatesResponse = { message: string } & ({
+    status: true;
+    data: Array<{
+        name: string;
+        slug: string;
+        abbreviation: string;
+    }>
+} | PaystackResponseError)
