@@ -57,7 +57,8 @@ type Customer = {
     customer_code: string;
     phone: string;
     risk_action: RiskAction;
-}
+    international_format_phone: string | null;
+};
 
 type CreateDVAResponseData = {
     bank: Bank;
@@ -123,4 +124,56 @@ export type AssignDVAData = {
 
 export type AssignDVAResponse = { message: string; } & ({
     status: true
+} | PaystackResponseError)
+
+
+export type ListDVAQuery = {
+    /** Status of the dedicated virtual account */
+    active: boolean;
+
+    /** The currency of the dedicated virtual account. Only NGN is currently allowed */
+    currency: Currency;
+
+    /** The bank's slug in lowercase, without spaces e.g. wema-bank */
+    provider_slug?: string;
+
+    /** he bank's ID e.g. 035 */
+    bank_id?: string;
+
+    /** The customer's ID */
+    customer?: string;
+}
+
+
+
+type SplitConfig = {
+    subaccount: string;
+};
+
+type ManagedAccount = {
+    customer: Customer;
+    bank: Bank;
+    id: number;
+    account_name: string;
+    account_number: string;
+    created_at: string;
+    updated_at: string;
+    currency: Currency;
+    split_config: SplitConfig;
+    active: boolean;
+    assigned: boolean;
+};
+
+type Meta = {
+    total: number;
+    skipped: number;
+    perPage: number;
+    page: number;
+    pageCount: number;
+};
+
+export type ListDVAResponse = { message: string } & ({
+    status: true;
+    data: Array<ManagedAccount>;
+    meta: Meta;
 } | PaystackResponseError)

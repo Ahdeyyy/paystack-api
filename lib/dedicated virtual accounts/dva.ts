@@ -1,4 +1,4 @@
-import type { AssignDVAData, AssignDVAResponse, CreateDVAData, CreateDVAResponse } from "./types";
+import type { AssignDVAData, AssignDVAResponse, CreateDVAData, CreateDVAResponse, ListDVAQuery, ListDVAResponse } from "./types";
 
 export class DedicatedVirtualAccounts {
     private endpoint: string = "https://api.paystack.co/dedicated_account";
@@ -43,6 +43,24 @@ export class DedicatedVirtualAccounts {
         const response_data = await response.json() as AssignDVAResponse;
 
         return response_data;
+    }
+
+    async list(query: ListDVAQuery): Promise<ListDVAResponse> {
+        const keys = Object.keys(query)
+        const url = new URL(this.endpoint)
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i] ?? ''
+            const value = query[key]
+            url.searchParams.set(key, value)
+        }
+        const response = await fetch(url, {
+            headers: this.get_headers(),
+            method: "GET",
+        })
+
+        const response_data = await response.json() as ListDVAResponse
+
+        return response_data
     }
 
     private get_headers() {

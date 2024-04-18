@@ -25,3 +25,11 @@ test("assign DVA", async () => {
     })
     expect(response.status).toBe(false)
 })
+test("list DVA", async () => {
+    let response = await paystack().dva.list({ active: true, currency: "NGN" });
+    expect(response.status).toBe(false);
+    if (response.status) {
+        expect(response.data).toBeInstanceOf(Array)
+        expect(response.meta.perPage).toBe(10)
+    }
+});
