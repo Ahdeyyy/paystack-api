@@ -1,5 +1,11 @@
 # paystack-api
 
+## 0.1.7
+
+### Patch Changes
+
+- e7c15ba: fixed paystack object creation in the documentation
+
 ## 0.1.6
 
 ### Patch Changes
