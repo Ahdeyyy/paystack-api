@@ -1,5 +1,11 @@
 # paystack-api
 
+## 0.1.6
+
+### Patch Changes
+
+- c7d4fa9: fixed DVA documentation and added documentation for miscellaneous
+
 ## 0.1.5
 
 ### Patch Changes
