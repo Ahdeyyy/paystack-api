@@ -39,7 +39,7 @@ import { Paystack } from "@ahdeyy/paystack"
 
 // create the paystack object
 
-const paystack = new Paystack({ secret_key: secret })
+const paystack = new Paystack(secret_key)
 
 const created_request = await paystack.payment_request.create({
   amount: 10000,
@@ -61,9 +61,7 @@ if (created_request.status) {
 #### Create payment request
 
 ```typescript
-const paystack = new Paystack({
-  secret_key: secret_key,
-})
+const paystack = new Paystack(secret_key)
 
 const created_request = await paystack.payment_request.create({
   amount: 10000,
